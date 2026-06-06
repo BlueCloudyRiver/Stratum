@@ -1,0 +1,27 @@
+# Local Environment Secrets (CRITICAL)
+.env
+*.env
+.env.local
+
+# Go Binaries and Executables
+/cmd/api/api
+/cmd/api/main
+*.exe
+*.exe~
+*.dll
+*.so
+*.dylib
+bin/
+
+# OS Specific Files
+.DS_Store
+Thumbs.db
+
+# IDEs and Editors
+.idea/
+.vscode/
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.swp
