@@ -8,7 +8,7 @@ import (
 	"strings"
 	"time"
 
-	"StratumAPI/internal/database"
+	"Stratum/internal/database"
 
 	"github.com/golang-jwt/jwt/v5"
 	"golang.org/x/crypto/bcrypt"

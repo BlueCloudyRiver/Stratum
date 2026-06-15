@@ -1,7 +1,9 @@
 package handlers
 
 import (
-	"StratumAPI/internal/database"
+	"Stratum/internal/database"
+	"database/sql"
+
 	"encoding/json"
 	"net/http"
 )
@@ -35,14 +37,14 @@ func CreateProjectHandler(w http.ResponseWriter, r *http.Request) {
 }
 
 func GetProjectsHandler(w http.ResponseWriter, r *http.Request) {
+	w.Header().Set("Content-Type", "application/json")
+
 	userid, ok := r.Context().Value("userID").(int)
 	if !ok {
 		w.WriteHeader(http.StatusUnauthorized)
 		json.NewEncoder(w).Encode(map[string]string{"error": "unauthorized"})
 		return
 	}
-
-	w.Header().Set("Content-Type", "application/json")
 
 	rows, err := database.DB.Query(
 		`SELECT id, title FROM projects WHERE userid = $1`,
@@ -80,22 +82,64 @@ func GetProjectsHandler(w http.ResponseWriter, r *http.Request) {
 }
 
 func GetProjectHandler(w http.ResponseWriter, r *http.Request) {
+	w.Header().Set("Content-Type", "application/json")
 
+	userid, ok := r.Context().Value("userid").(int)
+	if !ok {
+		w.WriteHeader(http.StatusUnauthorized)
+		json.NewEncoder(w).Encode(map[string]string{"error": "unauthorized"})
+		return
+	}
+
+	var input struct {
+		ID int `json:"id"`
+	}
+
+	if err := json.NewDecoder(r.Body).Decode(&input); err != nil {
+		w.WriteHeader(http.StatusBadRequest)
+		json.NewEncoder(w).Encode(map[string]string{"error": "bad request"})
+		return
+	}
+
+	var project Project
+
+	err := database.DB.QueryRow(
+		`SELECT id, title FROM projects WHERE userid = $1 AND id = $2`,
+		userid,
+		input.ID,
+	).Scan(
+		&project.ID,
+		&project.Title,
+	)
+
+	if err == sql.ErrNoRows {
+		w.WriteHeader(http.StatusNotFound)
+		json.NewEncoder(w).Encode(map[string]string{"error": "project not found"})
+		return
+	}
+
+	if err != nil {
+		w.WriteHeader(http.StatusInternalServerError)
+		json.NewEncoder(w).Encode(map[string]string{"error": "internal server error"})
+		return
+	}
+
+	w.WriteHeader(http.StatusOK)
+	json.NewEncoder(w).Encode(project)
 }
 
 func UpdateProjectHandler(w http.ResponseWriter, r *http.Request) {
-
 }
 
 func DeleteProjectHandler(w http.ResponseWriter, r *http.Request) {
+	w.Header().Set("Content-Type", "application/json")
+
 	userid, ok := r.Context().Value("userID").(int)
 	if !ok {
 		w.WriteHeader(http.StatusUnauthorized)
 		json.NewEncoder(w).Encode(map[string]string{"error": "Unauthorized"})
 		return
 	}
-
-	w.Header().Set("Content-Type", "application/json")
 
 	var input struct {
 		ID int `json:"id"`

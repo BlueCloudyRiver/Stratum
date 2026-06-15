@@ -6,8 +6,8 @@ import (
 	"net/http"
 	"os"
 
-	"StratumAPI/internal/database"
-	"StratumAPI/internal/handlers"
+	"Stratum/internal/database"
+	"Stratum/internal/handlers"
 
 	"github.com/go-chi/chi/v5"
 	"github.com/go-chi/chi/v5/middleware"
