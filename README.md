@@ -10,9 +10,8 @@ This version focuses on reliability, performance, and intuitive user experience,
 
 ## License
 
-This project is under a **Custom Proprietary (Source-Available)** license. 
-
-The source code is publicly visible for educational and review purposes only. Commercial use, modification, distribution, and sublicensing are strictly prohibited. See the [LICENSE](LICENSE) file for the full text.
+This project is under Apache License 2.0 
+See the [LICENSE](LICENSE) file for the full text.
 
 
 Built by [River](https://github.com/BlueCloudyRiver)
