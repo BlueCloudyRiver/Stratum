@@ -25,3 +25,55 @@ This version focuses on reliability, performance, and intuitive user experience,
 - HTML
 - TailwindCSS
 
+## Core Entities
+
+### User
+Represents an account on the platform.
+
+### Workspace
+Represents a company or team.
+
+### Workspace Member
+Links users to workspaces.
+
+### Project
+Represents a business initiative.
+
+### Task
+Represents work within a project.
+
+### Client
+Represents a customer of a workspace.
+
+## Relationships
+
+User
+ ↓
+WorkspaceMember
+ ↓
+Workspace
+ ├── Projects
+ │     └── Tasks
+ │
+ ├── Tasks
+ │
+ └── Clients
+
+
+ ## User Flow
+
+1. User registers.
+2. User creates a workspace.
+3. User invites team members.
+4. User creates a project.
+5. User creates tasks.
+6. Team members complete tasks.
+7. Workspace owner tracks progress.
+
+
+## Design Decisions
+
+- Tasks may belong directly to a workspace.
+- Tasks may optionally belong to a project.
+- Clients belong to workspaces.
+- Users may belong to multiple workspaces.

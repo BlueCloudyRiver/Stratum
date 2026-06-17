@@ -15,7 +15,7 @@ import (
 )
 
 type Claims struct {
-	UserID int `json:"user_id"`
+	UserID int `json:"userid"`
 	jwt.RegisteredClaims
 }
 
@@ -101,7 +101,6 @@ func LoginHandler(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
-	// Fix 3: Strict 15-Minute Token Lifetime
 	expirationTime := time.Now().Add(15 * time.Minute)
 	claims := &Claims{
 		UserID: dbUserID,
@@ -112,7 +111,6 @@ func LoginHandler(w http.ResponseWriter, r *http.Request) {
 
 	token := jwt.NewWithClaims(jwt.SigningMethodHS256, claims)
 
-	// Fix 1: Pull JWT Secret dynamically from environment variable
 	jwtSecret := []byte(os.Getenv("JWT_SECRET"))
 	tokenString, err := token.SignedString(jwtSecret)
 	if err != nil {
