@@ -14,8 +14,21 @@ import (
 	"github.com/joho/godotenv"
 )
 
+func corsMiddleware(next http.Handler) http.Handler {
+	return http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
+		w.Header().Set("Access-Control-Allow-Origin", "*")
+		w.Header().Set("Access-Control-Allow-Methods", "GET, POST, PUT, DELETE, OPTIONS")
+		w.Header().Set("Access-Control-Allow-Headers", "Content-Type, Authorization")
+		if r.Method == http.MethodOptions {
+			w.WriteHeader(http.StatusNoContent)
+			return
+		}
+		next.ServeHTTP(w, r)
+	})
+}
+
 func main() {
-	if err := godotenv.Load(".env", "../../.env"); err != nil {
+	if err := godotenv.Load(".env", "../../../.env"); err != nil {
 		log.Println("Warning: No .env file found, reading straight from system environment")
 	}
 
@@ -26,6 +39,7 @@ func main() {
 
 	r := chi.NewRouter()
 	r.Use(middleware.Logger)
+	r.Use(corsMiddleware)
 
 	r.Post("/register", handlers.RegisterHandler)
 	r.Post("/login", handlers.LoginHandler)
@@ -36,5 +50,5 @@ func main() {
 	}
 
 	fmt.Printf("Server starting on port :%s...\n", port)
-	log.Fatal(http.ListenAndServe(":"+port, r))
+	log.Fatal(http.ListenAndServe(":"+port, (r)))
 }
