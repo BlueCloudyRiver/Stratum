@@ -1,4 +1,4 @@
-package middleware
+package middle
 
 import (
 	"Stratum/internal/handlers"
@@ -40,7 +40,7 @@ func projectMiddleware(next http.Handler) http.Handler {
 			json.NewEncoder(w).Encode(map[string]string{"error": "unauthorized"})
 			return
 		}
-		
+
 		userid := claims.UserID
 		ctx := context.WithValue(r.Context(), "userid", userid)
 		r = r.WithContext(ctx)
