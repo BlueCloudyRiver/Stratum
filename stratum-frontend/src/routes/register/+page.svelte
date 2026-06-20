@@ -21,7 +21,11 @@
     }
 </script>
 
+<<<<<<< HEAD
 <h1 class="text-3xl font-bold mb-4">Stratum Register</h1>
+=======
+<h1 class="text-3xl font-bold mb-4">Stratum Login</h1>
+>>>>>>> d5cfa936bdeb448a563166d47966a7f22f1c2200
 
 <input
 	class="border rounded p-2 w-full mb-3"
@@ -41,5 +45,9 @@
 	class="border rounded px-4 py-2"
 	onclick={register}
 >
+<<<<<<< HEAD
 	Register
+=======
+	Login
+>>>>>>> d5cfa936bdeb448a563166d47966a7f22f1c2200
 </button>
