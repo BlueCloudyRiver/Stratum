@@ -47,7 +47,7 @@
 
 <button
 	class="border rounded px-4 py-2"
-	onclick={login}
+	on:click={login}
 >
 	Login
 </button>
