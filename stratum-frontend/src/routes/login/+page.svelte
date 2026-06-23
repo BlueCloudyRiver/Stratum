@@ -29,24 +29,26 @@
     }
 </script>
 
-<h1 class="text-3xl font-bold mb-4">Stratum Login</h1>
+<h1 class="text-3xl font-bold mb-4 p-2">Stratum Login</h1>
+
+<hr class="border-gray-400 mt-5 mb-5"> 
 
 <input
-	class="border rounded p-2 w-full mb-3"
+	class="border-1 border-gray-400 rounded p-2 w-full mb-3 ml-2"
 	type="email"
 	placeholder="Email"
 	bind:value={email}
 />
 
 <input
-	class="border rounded p-2 w-full mb-3"
+	class="border-1 border-gray-400 rounded p-2 w-full mb-3 ml-2 "
 	type="password"
 	placeholder="Password"
 	bind:value={password}
 />
 
 <button
-	class="border rounded px-4 py-2"
+	class="border rounded px-4 py-2 ml-2 mt-2"
 	on:click={login}
 >
 	Login
