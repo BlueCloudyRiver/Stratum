@@ -1,5 +1,4 @@
 # Stratum
-The project is still in development.
 
 Stratum is a collaborative business operations platform built for startups and small businesses. It helps teams manage projects, employees, clients, and workflows through a single intuitive workspace, reducing the need for multiple disconnected tools.
 
