@@ -47,12 +47,12 @@
             </div>
             
             <h1 class="text-4xl sm:text-6xl font-black text-white font-sans tracking-tight leading-[1.05]">
-                Layered team alignment. <br />
+                Business collaboration, simplified.<br />
                 <span class="text-[#158539]">Zero friction.</span>
             </h1>
             
             <p class="text-sm text-gray-300 max-w-xl font-sans leading-relaxed">
-                Contextualize your operations. Stratum brings tasks, communication matrices, and asset pipelines into a single dark-mode high-performance canvas.
+                Manage projects, collaborate with your team, organize clients, and streamline workflows from a single intuitive workspace.
             </p>
             
             <div class="pt-2 flex items-center gap-4 text-xs font-bold uppercase">
@@ -62,9 +62,9 @@
                 >
                     Get Started Free
                 </a>
-                <button class="bg-black/40 text-white border border-white/10 px-6 py-3 rounded hover:bg-black/60 transition backdrop-blur-sm cursor-pointer">
-                    View Specs
-                </button>
+                <a href="/contact" class="bg-black/40 text-white border border-white/10 px-6 py-3 rounded hover:bg-black/60 transition backdrop-blur-sm cursor-pointer">
+                    Learn more
+                </a>
             </div>
         </div>
         
