@@ -25,3 +25,6 @@ Thumbs.db
 *.njsproj
 *.sln
 *.swp
+
+/target
+/backend/target
